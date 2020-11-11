@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
@@ -12,6 +14,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using ParkyAPI.Data;
 using ParkyAPI.ParkyMapper;
 using ParkyAPI.Respository;
@@ -35,6 +38,22 @@ namespace ParkiAPI
 
             services.AddScoped<INationalParkRepository, NationalParkRepository>();
             services.AddAutoMapper(typeof(ParkyMappings));
+            services.AddSwaggerGen(options=> {
+                options.SwaggerDoc("NationalParkAPI", new Microsoft.OpenApi.Models.OpenApiInfo()
+                {
+                    Title = "NationalParkAPI",
+                    Version = "1",
+                    Description="National Park API",
+                    Contact= new Microsoft.OpenApi.Models.OpenApiContact()
+                    {
+                        Email="dhillon.64@gmail.com",
+                        Name="Parminder Dhillon"
+                    }
+                });
+                var xmlCommentFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var cmlCommentsFullPath = Path.Combine(AppContext.BaseDirectory, xmlCommentFile);
+                options.IncludeXmlComments(cmlCommentsFullPath);
+            });
             services.AddControllers();
         }
 
@@ -47,6 +66,12 @@ namespace ParkiAPI
             }
 
             app.UseHttpsRedirection();
+            app.UseSwagger();
+            app.UseSwaggerUI(options=>
+            {
+                options.SwaggerEndpoint("/swagger/NationalParkAPI/swagger.json", "Parky API");
+                options.RoutePrefix = "";
+            });
 
             app.UseRouting();
 
