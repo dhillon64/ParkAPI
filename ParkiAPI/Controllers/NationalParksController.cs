@@ -140,7 +140,7 @@ namespace ParkyAPI.Controllers
         /// <summary>
         /// Delete a National Park
         /// </summary>
-        /// <param name="nationalParkId"> The Id Of the NAtional Park to delete </param>
+        /// <param name="nationalParkId"> The Id Of the National Park to delete </param>
         /// <returns></returns>
 
         [HttpDelete("{nationalParkId:int}", Name="DeleteNationalPark")]

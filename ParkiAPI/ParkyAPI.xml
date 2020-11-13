@@ -36,7 +36,42 @@
             <summary>
             Delete a National Park
             </summary>
-            <param name="nationalParkId"> The Id Of the NAtional Park to delete </param>
+            <param name="nationalParkId"> The Id Of the National Park to delete </param>
+            <returns></returns>
+        </member>
+        <member name="M:ParkyAPI.Controllers.TrailsController.GetTrails">
+            <summary>
+            Get list of all Trials.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ParkyAPI.Controllers.TrailsController.GetTrail(System.Int32)">
+            <summary>
+            Get individual Trial.
+            </summary>
+            <param name="trailId">The id of the trial</param>
+            <returns></returns>
+        </member>
+        <member name="M:ParkyAPI.Controllers.TrailsController.CreateTrail(ParkyAPI.Models.Dtos.TrailCreateDto)">
+            <summary>
+            Create a new Trail
+            </summary>
+            <param name="trailDto">The object of the Trail being created</param>
+            <returns></returns>
+        </member>
+        <member name="M:ParkyAPI.Controllers.TrailsController.UpdateTrail(System.Int32,ParkyAPI.Models.Dtos.TrailUpdateDto)">
+            <summary>
+            Update a existing Trail
+            </summary>
+            <param name="trailId"> The Id of the trail you want to update </param>
+            <param name="trailDto"> The updated trail object</param>
+            <returns></returns>
+        </member>
+        <member name="M:ParkyAPI.Controllers.TrailsController.DeleteTrail(System.Int32)">
+            <summary>
+            Delete a Trail
+            </summary>
+            <param name="trailId"> The Id of the Trail you want to delete </param>
             <returns></returns>
         </member>
     </members>

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ParkiAPI.Models;
+using ParkyAPI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,8 @@ namespace ParkyAPI.Data
           
         }
 
-        public DbSet<NationalPark> NationalParks { get; set; } 
+        public DbSet<NationalPark> NationalParks { get; set; }
+
+        public DbSet<Trail> Trails { get; set; }
     }
 }
